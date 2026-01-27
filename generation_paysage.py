@@ -1,6 +1,5 @@
 # Nom(s) étudiant(s) / Name(s) of student(s):
-# Farah Romdhane : 20288662
-# Hamza Aqel : 20111814
+# Hamza Aqel
 
 
 from solid import *
