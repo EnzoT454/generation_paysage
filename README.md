@@ -17,6 +17,47 @@ Les îles sont générées à partir de matrices de hauteur lissées, avec plage
 - Exporter le résultat vers **OpenSCAD** pour visualisation ou impression 3D
 
 ---
+
+## Description
+
+À chaque exécution, le programme :
+- génère un **océan** (plaque 3D)
+- crée **une ou deux îles** placées aléatoirement
+- applique un **bruit contrôlé** et un **lissage itératif** pour des formes naturelles
+- ajoute une **plage circulaire irrégulière** autour de chaque île
+- colore le relief selon la hauteur (roche, terre, végétation)
+- exporte le résultat dans un fichier **`model.scad`**
+
+Le rendu est **différent à chaque lancement** grâce à l’aléatoire.
+
+
+---
+
+## Fonctionnement (vue d’ensemble)
+
+### Océan
+- Grande plaque bleue
+- Épaisseur fixe
+- Signature textuelle extrudée sous l’océan
+
+### Îles
+- Générées via une **matrice de hauteurs 2D**
+- La hauteur décroît avec la distance au centre
+- Bruit aléatoire + lissage pour un rendu organique
+
+### Plages
+- Anneau circulaire entre deux rayons
+- Hauteur décroissante vers l’océan
+- Ajout aléatoire de végétation (petits cylindres)
+
+### Conversion 3D
+- Chaque cellule devient un **cube 3D**
+- Couleur selon la hauteur :
+  - roche (gris)
+  - terre (brun)
+  - végétation (vert)
+
+---
 ## Prérequis
 
 - Python 3.x
@@ -30,7 +71,15 @@ pip install solidpython
 ```
 
 ---
-## Résultat :
+## Étapes d’exécution
+### 1️⃣ Lancer la génération
+
+Depuis la racine du projet :
+
+```bash
+python3 generation_paysage.py
+```
+
 
 Génération du fichier :
 
@@ -38,7 +87,15 @@ Génération du fichier :
 model.scad
 ```
 
-Ce fichier peut être ouvert directement dans OpenSCAD.
+2️⃣ Visualiser le paysage
+
+
+1. Ouvrir **OpenSCAD**
+2. Charger le fichier généré :
+```bash
+model.scad
+```
+3. Cliquer sur **Preview (F5)** ou **Render (F6)**
 
 
 
